@@ -1,0 +1,18 @@
+Tema 2 PC - Sistem monetar de tip Internet Banking 
+
+Melania Georgescu 322CC
+
+Conexiunea TCP server-client:
+	Din client introduc de la tastatura comenzile pentru server, iar in cel din urma verific si rezolv ce trebuie facut.
+
+	In server.cpp imi construiesc un vector in care fiecare element are o structura cu datele pt un client.	
+	La logare, caut in acest vector daca exista persoana cu acel numar si cu pinul corect si trimit raspuns inapoi. Daca datele sunt bune, stiu ca am o conexiunea activa printr-o variabila conectare (bool true), iar in cazul pinului gresit, in alt vector, la pozitia la care se gaseste clientul cu numarul introdus in vectorul initial, incrementez valoarea pana ajunge la 3, cand acel numar se va bloca.
+Daca alt client se va loga, inclusiv daca cineva incearca sa se logheze cu acelasi numar si parola, va primi eroarea de -2 Sesiune deja deschisa.
+	La logout, deconectez clientul (daca era deconectat) -> variabila conectare inapoi la false.
+	La listsold, afisez soldul doar daca exista client conectat.
+	La transfer, verific daca exista client cu numarul celui caruia se vor transfera banii, iar in caz ca exista, scad din soldul clientului curent suma si o adaug in soldul clientului cerut.
+	La quit, deconectez clientul in cazul in care nu a facut-o (conectare-false) si inchid conexiunea.
+	Daca se introduce quit de la tastatura in server, voi inchide serverul.
+	
+	In client.cpp scriu in fisier (client-id.log) ce introduce clientul de la tastatura si raspunsurile pe care le primeste de la server.
+De asemenea, la quit, inchid socketul.
